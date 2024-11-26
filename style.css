@@ -17,10 +17,13 @@ header nav {
     height: 80px;
     font-size: 16px;
     background-color: white;
+    /* Flexbox */
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
+    justify-content: space-between; /*sobre main axis*/
+    align-items: center; /*sobre cross axis*/
+    position: fixed; /*para que se quede estático aunque haga scroll*/ 
+    z-index: 1; /*para superposición*/
 }
 
 #pinterest-icon {
@@ -56,7 +59,7 @@ header nav {
 
 .search {
     flex-grow: 1;
-    /*para que los elementos se adapten al contenedor*/
+    /*para que el tamaño de los elementos se adapte al contenedor*/
     height: 48px;
     background-color: #e9e9e9;
     border-radius: 30px;
@@ -84,7 +87,7 @@ header nav {
     font-size: 16px;
     flex-grow: 1;
     outline: none;
-    /*para quitar el borde al seleccionar*/
+    /*para quitar el borde al seleccionar y hacer click*/
 }
 
 #lupa {
@@ -116,8 +119,6 @@ header nav {
     columns: 5 240px;
     /*5 columnas de 240px cada una*/
     margin: auto;
-    margin-left: 12%;
-    margin-right: 12%;
 }
 
 .card-image {
@@ -127,25 +128,36 @@ header nav {
 
 .card-image img {
     border-radius: 15px;
-    min-width: 240px;
-    max-width: 240px;
+    min-width: 260px;
+    max-width: 260px;
 }
 
 .card-image:hover> :first-child {
-    filter: brightness(60%);
+    filter: brightness(60%); /*para opacar el brillo en hover*/
 }
 
-.card-image:hover>*
-
+.card-image:hover> * {
 /* >* a todo lo que está dentro */
-    {
-    visibility: visible;
+    visibility: visible; /*para que solo aparezcan los elementos cuando se pase el mouse encima*/
     display: inline;
 }
 
+.button{
+    position: absolute; /*para colocarlo sobre la image*/
+    left:53%;
+    top: 5%;
+    padding: 13px 15px;
+    background-color: #e60023;
+    border-radius: 30px;
+    border:none;
+    visibility: hidden;
+}
+
 .button a {
-    font-size: 16px;
-    font-weight: bold;
+text-decoration: none;
+color: white;
+font-size: 16px;
+font-weight: bold;
 }
 
 .oculto1 {
@@ -153,8 +165,26 @@ header nav {
     left: 60%;
     bottom: 20px;
     background-color: white;
+    font-size: 30px;
+    border-radius: 30px;
+    font-weight: bold;
+    padding: 4px;
+    visibility: hidden;
+    display: none;
 }
 
+.oculto2 {
+    position: absolute;
+    left: 75%;
+    bottom: 20px;
+    background-color: white;
+    font-size: 30px;
+    border-radius: 30px;
+    font-weight: bold;
+    padding: 4px;
+    visibility: hidden;
+    display: none;
+}
 
 @media (max-width: 1200px) {
     .imagenes {
